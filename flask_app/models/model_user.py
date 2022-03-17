@@ -1,17 +1,6 @@
 from flask_app.config.mysqlconnection import connectToMySQL
 
 
-# Comments contain code review concerns/questions. Documentation is distinguished
-# with triple single quote comments.
-# General questions here:
-# Naming? I know some names don't follow convention.
-# Is there some way to manipulate the User instances directly for things like
-# get_user and delete? I guess we never make instances until a query is run...
-# Hmm. The purpose of the class is strictly for creating User instances for the
-# rendered template after queries are made? What happens to those instances? Are
-# they like, consumed in the controller?
-
-
 DATABASE = 'users_db'
 
 ''' 
@@ -28,7 +17,6 @@ class User:
         self.updated_at = data['updated_at']
         self.created_at = data['created_at']
     
-    # Is it okay to separate all the vars like this?
     '''
     Get all users in table. Turns the list of dictionaries returned by the
     SELECT query into a list of instances of class User.
@@ -44,9 +32,6 @@ class User:
             all_users.append(cls(user))
         return all_users
     
-    # The data dictionary only contains the user id. Why can I not pass in the
-    # ID directly?
-    # How can I specify User instance return type? -> user?
     '''
     Get a single user from the users table. 
     URL: /users/<id>
